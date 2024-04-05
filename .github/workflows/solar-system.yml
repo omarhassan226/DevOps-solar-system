@@ -14,7 +14,7 @@ env:
     MONGO_PASSWORD: ${{ secrets.MONGO_PASSWORD }}
 
 jobs:
-    
+
     unit-testing:
         name: Unit Testing
 
@@ -33,4 +33,10 @@ jobs:
 
             - name: Unit Testing 
               run: npm test
+
+            - name: Archive test result 
+              uses : actions/upload-artifact@v3
+              with:
+                name: Mocha-Test-Result
+                path: test-result.xml
 
